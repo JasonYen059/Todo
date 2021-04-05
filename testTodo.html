@@ -207,7 +207,11 @@ pointer-events: none;
 
       var todos = [{name:"preset1", done:false},{name:"preset2",  done:false},{name:"preset3",  done:false}];
       
-      
+      todos.forEach((value,index)=>{
+        // $("li").remove();
+        $(".todoList").append(`<li> ${value.name} <button value="${index}">X</button></li>`);
+        
+      });
 
       
       
@@ -218,12 +222,6 @@ pointer-events: none;
         todos.push({name:inputValue.value, done:false});
         console.log(todos);
         inputValue.value = "";
-        
-      });
-
-      todos.forEach((value,index)=>{
-        // $("li").remove();
-        $(".todoList").append(`<li> ${value.name} <button value="${index}">X</button></li>`);
         
       });
      
