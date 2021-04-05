@@ -1,0 +1,162 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(120deg, rgb(116, 115, 115), rgb(167, 151, 137));
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#todo {
+  background-color: white;
+  border-radius: 8px;
+}
+
+
+#titleImg {
+  width: 400px;
+  height: 200px;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  font-size: 2rem;
+  
+  
+}
+
+#imgInner {
+  background-image: url("scram5.jpg");
+  width: 400px;
+  height: 200px;
+  background-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}
+
+header{
+  text-shadow:2px 2px black;
+  font-weight: 600;
+}
+
+form {
+  width: 350px;
+  height: 50px;
+  background-color: white;
+  margin: auto;
+}
+
+.addInput{
+  width: 300px;
+  height: 40px;
+  border: none;
+  font-size: 20px;
+  outline: none;
+  padding: 5px;
+}
+
+::placeholder{
+  color: #d4d1d1;
+}
+
+.addButton{
+  width: 50px;
+  height:40px;
+  border: none;
+  background-color: white;
+  color: #919090;
+  font-size: 20px;
+  transition: 0.5s ease;
+  cursor:pointer;
+  outline: none;
+  z-index: 1;
+  line-height: 40px;
+  text-align: center;
+}
+
+
+
+.addButton:hover {
+  background-color: rgb(114, 111, 111);
+  /* box-shadow: 2px 2px black; */
+  color: white;
+}
+
+.container {
+  width: 350px;
+  max-width: 350px;
+  background-color: #ffffff;
+  margin: auto;
+  border-top: 2px solid #adadad;
+}
+
+ul {
+  list-style: none;
+}
+
+
+
+
+header, form, .todoList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.todoList{
+  min-width: 300px;
+  color: black;
+  font-size: 20px;
+  flex-direction: column;
+
+}
+
+li {
+  background-color: #ffffff;
+  height: 35px;
+  width: 350px;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+li button {
+  background-color: rgb(245, 217, 60);
+  width: 25px;
+  height: 25px;
+  float: right;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.5s ease;
+}
+
+li button:hover{
+  box-shadow: 2px 2px rgb(63, 63, 63);
+}
+
+li span{
+  font-size: 20px;
+  margin-right: 20px;
+  cursor: pointer;
+  
+}
+
+.completed {
+opacity: 0.2;
+text-decoration: line-through;
+transition: 0.5s ease;
+}
+
+.fa-check-circle {
+pointer-events: none;
+}

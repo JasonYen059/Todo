@@ -120,9 +120,12 @@
 
       var todos = [{name:"preset1", done:false},{name:"preset2",  done:false},{name:"preset3",  done:false}];
       
-      for(var i =0; i<todos.length; i++ ){
-        creatTodo(todos[i].name);
-      };
+      todos.forEach((todo,index)=>{
+        creatTodo(todo.name);
+      })
+      // for(var i =0; i<todos.length; i++ ){
+      //   creatTodo(todos[i].name);
+      // };
       
 // For Add new Item & Delete new Item
      $(".addButton").click((event)=>{
