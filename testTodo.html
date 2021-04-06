@@ -70,7 +70,7 @@ form {
 }
 
 .addInput{
-  width: 300px;
+  width: 325px;
   height: 40px;
   border: none;
   font-size: 20px;
@@ -142,13 +142,14 @@ li {
   width: 350px;
   border-radius: 8px;
   padding: 5px;
+  /* display: flex; */
 }
 
-li button {
+.trashBtn , .checkBtn{
   background-color: rgb(245, 217, 60);
   width: 25px;
   height: 25px;
-  float: right;
+  float:right;
   cursor: pointer;
   outline: none;
   border: none;
@@ -157,31 +158,24 @@ li button {
   color: #ffffff;
 }
 
-li button:hover{
+.trashBtn:hover , .checkBtn:hover{
   box-shadow: 2px 2px rgb(63, 63, 63);
+  background-color: rgb(245, 171, 60);
 }
 
-.fa-trash-alt {
+.fa-trash-alt ,.fa-check {
   pointer-events: none;
 }
 
-/* li span{
-  font-size: 20px;
-  margin-right: 20px;
-  cursor: pointer;
-  
+.checkBtn {
+  margin-right: 10px;
 }
 
-.completed {
-opacity: 0.2;
-text-decoration: line-through;
-transition: 0.5s ease;
+.finished {
+  background-color: black;
 }
 
-.fa-check-circle {
-pointer-events: none;
-} */
-     
+   
 
       
    
@@ -210,87 +204,120 @@ pointer-events: none;
 
     <script type="text/javascript">
 
-      var todos = [{name:"preset1", done:false},{name:"preset2",  done:false},{name:"preset3",  done:false}];
-      
-    
-      function runForeach (){
+      var todos = [{name:"Learning", done:false},{name:"Ridding",  done:false},{name:"Dinner",  done:false}];
+      var inputValue = document.querySelector(".addInput");
+      var todoList = $(".todoList");
+
+      showList();
+
+      function showList(){
+        $("li").remove();
         todos.forEach((value,index)=>{
-        $(".todoList").append(`<li> ${value.name} <button value="${index}"><i class="far fa-trash-alt"></i></button></li>`);
-      });
+          $(".todoList").append(`<li> ${value.name}<button class="editBtn">EDIT</button><button onclick="delTodos(${index})" class="trashBtn"><i class="far fa-trash-alt"></i></button> <button onclick="doneTodos()" class="checkBtn"><i class="fas fa-check"></i></button></li>`);
+          
+        });
+        
       };
-      
-      runForeach();
-      
-      
+
       $(".addButton").click((event)=>{
         event.preventDefault();
-        $("li").remove();
-        var inputValue = document.querySelector(".addInput");
         todos.push({name:inputValue.value, done:false});
         inputValue.value = "";
-        runForeach();
-        delTodos();
-        console.log(todos);
+        showList();
       });
-      
-     
-      function delTodos (){
-        $("li button").click((event)=>{
-        event.preventDefault();
-        var delItem = event.target.value;
-        todos.splice(delItem,1);
-        $("li").remove();
-        console.log(todos);
-        runForeach();
-      });
+
+      function delTodos(i){
+        todos.splice(i,1)
+        showList();
       }
 
-      delTodos();
-      
+      function doneTodos(event){
+          event.preventDefault();
+          event.target.classList.toggle("finished")
+      };
 
+   
+      // function editItem(i){
+      //   var newValue = prompt("What do you want to edit?")
+      //   todos.splice(i,1,newValue)
+      //   showList();
+      //   console.log(newValue);
+
+      // }
+      
+        // $(".editBtn").click((event)=>{
+
+        // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      // runForeach();
+      // function runForeach (){
+      //   todos.forEach((value,index)=>{
+      //   $(".todoList").append(`<li> ${value.name}<button class="trashBtn" value="${index}"><i class="far fa-trash-alt"></i></button> <button class="checkBtn" value="${value.done}"><i class="fas fa-check"></i></button> </li>`);
+      //   });
+      // }
+
+      
+      // $(".addButton").click((event)=>{
+      //   event.preventDefault();
+      //   $("li").remove();
+      //   var inputValue = document.querySelector(".addInput");
+      //   todos.push({name:inputValue.value, done:false});
+      //   inputValue.value = "";
+      //   runForeach();
+      //   delTodos();
+      //   doneTodos();
+      //   // console.log(todos);
+      // });
+      
      
+      // delTodos();
+      // function delTodos(){
+      //   $(".trashBtn").click((event)=>{
+      //   event.preventDefault();
+      //   var delItem = event.target;
+      //   todos.splice(delItem.value,1);
+      //   delItem.parentElement.remove();
+      //   // console.log(todos);
+      // });
+      // }
+
+      // doneTodos();
+      // function doneTodos(){
+      //   $(".checkBtn").click((event)=>{
+      //     event.preventDefault();
+      //     var doneTodos = event.target.value;
+      //     var showDone = event.target;
+      //     if (doneTodos === "false"){
+      //       var finished = new Boolean(true);
+      //       todos.done = finished;
+      //       showDone.classList.toggle("finished");
+      //     }
+      //     console.log(showDone);
+          
+
+      //   });
 
 
 
-    
-      
+      // }
 
-
-      
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-     
-    //  $(".addButton").click((event)=>{
-    //       event.preventDefault();
-    //       var inputValue = $(".addInput");
-    //       var inputValue = document.querySelector(".addInput");
-    //       todos.push({name:`${inputValue.value}`, done:false});
-    //       creatTodo(inputValue.value);
-    //       inputValue.value="";
-    //     console.log(todos);
-    //   });
-
-    //   function creatTodo(title){
-    //     $(".todoList").append(`<li> ${title} <button> X </button> </li>`);
-    //       $("li button").on('click',(event)=>{
-    //                 event.preventDefault();
-    //                 event.target.parentElement.remove();
-    //           todos.shift(this,1); 
-    //       }); 
-    //     }
-        
 
 
     </script>
