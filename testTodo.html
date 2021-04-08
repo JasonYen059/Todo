@@ -98,7 +98,6 @@ form {
 }
 
 
-
 .addButton:hover {
   background-color: rgb(114, 111, 111);
   /* box-shadow: 2px 2px black; */
@@ -116,8 +115,6 @@ form {
 ul {
   list-style: none;
 }
-
-
 
 
 header, form, .todoList {
@@ -142,10 +139,12 @@ li {
   width: 350px;
   border-radius: 8px;
   padding: 5px;
+  margin:5px 0;
+  border-bottom: 2px solid #f5f5f5;
   /* display: flex; */
 }
 
-.trashBtn , .checkBtn{
+.trashBtn , .editBtn{
   background-color: rgb(245, 217, 60);
   width: 25px;
   height: 25px;
@@ -155,27 +154,62 @@ li {
   border: none;
   border-radius: 5px;
   transition: 0.5s ease;
-  color: #ffffff;
+  color: #383838;
 }
 
-.trashBtn:hover , .checkBtn:hover{
+.editBtn {
+  margin-right: 10px;
+}
+
+.trashBtn:hover , .editBtn:hover{
   box-shadow: 2px 2px rgb(63, 63, 63);
   background-color: rgb(245, 171, 60);
 }
 
-.fa-trash-alt ,.fa-check {
+.fa-trash-alt ,.fa-check , .fa-wrench{
   pointer-events: none;
 }
 
 .checkBtn {
+  background-color: rgb(255, 255, 255);
+  width: 25px;
+  height: 25px;
+  float: left;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  transition: 0.5s ease;
+  color: #868686;
   margin-right: 10px;
 }
 
-.finished {
-  background-color: black;
+.checkBtn:hover {
+  box-shadow: 2px 2px rgb(63, 63, 63);
 }
 
-   
+.finished {
+  background-color: rgb(136, 136, 136);
+  border-radius: 50%;
+  transition: 0.5s ease;
+  color: #f5f5f5;
+  float: left;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  outline: none;
+  margin-right: 10px;
+  border:none;
+}
+
+.finished-parent{
+  transition: 0.5s ease;
+  background-color: rgb(219, 219, 219);
+  color: #a3a3a3;
+  text-decoration: line-through;
+}
+
+
 
       
    
@@ -213,7 +247,13 @@ li {
       function showList(){
         $("li").remove();
         todos.forEach((value,index)=>{
-          $(".todoList").append(`<li> ${value.name}<button class="editBtn">EDIT</button><button onclick="delTodos(${index})" class="trashBtn"><i class="far fa-trash-alt"></i></button> <button onclick="doneTodos()" class="checkBtn"><i class="fas fa-check"></i></button></li>`);
+
+          if (todos[index].done === true){
+            $(".todoList").append(`<li class="finished-parent"> <span>${value.name}</span> <button onclick="delTodos(${index})" class="trashBtn"><i class="far fa-trash-alt"></i></button> <button class="editBtn"><i class="fas fa-wrench"></i></button> <button onclick="toTrue(${index})" class="finished"><i class="fas fa-check"></i></button></li>`);
+          } else {
+            $(".todoList").append(`<li> <span>${value.name}</span> <button onclick="delTodos(${index})" class="trashBtn"><i class="far fa-trash-alt"></i></button> <button class="editBtn"><i class="fas fa-wrench"></i></button> <button onclick="toTrue(${index})" class="checkBtn"><i class="fas fa-check"></i></button></li>`);
+          }
+
           
         });
         
@@ -224,19 +264,46 @@ li {
         todos.push({name:inputValue.value, done:false});
         inputValue.value = "";
         showList();
+        checked();
       });
 
       function delTodos(i){
         todos.splice(i,1)
         showList();
+        checked();
       }
 
-      function doneTodos(event){
-          event.preventDefault();
-          event.target.classList.toggle("finished")
-      };
+      checked();
+      function checked(){
+        $(".checkBtn").click((event)=>{
+        event.preventDefault();
+        var target = event.target;
+        target.classList.toggle("finished");
+        target.parentElement.classList.toggle("finished-parent");
+      });
+      }
+
+      function toTrue(index){
+        todos[index].done = true;
+        // console.log(todos)
+      }
+
+      edit();
+      function edit(){
+        var listItem = this.parentNode;
+        console.log(listItem);
+      }
+        
+      
+          
 
    
+
+
+     
+      
+
+
       // function editItem(i){
       //   var newValue = prompt("What do you want to edit?")
       //   todos.splice(i,1,newValue)
