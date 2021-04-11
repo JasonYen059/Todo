@@ -14,139 +14,333 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     
     <style type="text/css">
-      *{
-        margin: 0;
-        padding: 0;
-        font-family:sans-serif;
-        box-sizing: border-box;
-      }
+    *{
+  margin: 0;
+  padding: 0;
+  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+}
 
-      body {
-          background: linear-gradient(120deg, rgb(116, 115, 115), rgb(88, 93, 151));
-          color: white;
-          min-height: 100vh;
-      }
+body {
+    background: linear-gradient(120deg, rgb(121, 121, 121), #ffffff);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-      .addInput{
-        width: 500px;
-        height: 40px;
-        border: none;
-        font-size: 20px;
-        border-radius: 8px 0 0 8px;
-        outline: none;
-        padding: 5px;
-      }
-
-      .addButton{
-        width: 100px;
-        height: 40px;
-        border: none;
-        background-color: rgb(177, 171, 171);
-        color: #f5f5f5;
-        font-size: 20px;
-        border-radius: 0 8px 8px 0;
-        transition: 0.5s ease;
-        cursor:pointer;
-        outline: none;
-      }
-
-      .addButton:hover {
-        background-color: rgb(114, 111, 111);
-        box-shadow: 2px 2px black;
-      }
-
-      ul {
-        list-style: none;
-      }
+#todo {
+  background-color: white;
+  border-radius: 8px;
+}
 
 
-      header, form, .todoList{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+#titleImg {
+  width: 400px;
+  height: 200px;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  font-size: 2rem;
+  
+  
+}
 
-      header {
-          font-size: 30px;
-      }
+#imgInner {
+  background-image: url("scram5.jpg");
+  width: 400px;
+  height: 200px;
+  background-size: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+}
 
-      .todoList{
-        min-width: 500px;
-        color: black;
-        font-size: 20px;
-        flex-direction: column;
-      
+header{
+  text-shadow:2px 2px black;
+  font-weight: 600;
+}
 
-      }
+form {
+  width: 350px;
+  height: 50px;
+  background-color: white;
+  margin: auto;
+}
 
-      li {
-        background-color: #f5f5f5;
-        margin: 10px;
-        height: 35px;
-        width: 600px;
-        border-radius: 8px;
-        padding: 5px;
-      }
+.addInput{
+  width: 325px;
+  height: 40px;
+  border: none;
+  font-size: 20px;
+  outline: none;
+  padding: 5px;
+}
 
-      li button {
-        background-color: rgb(245, 217, 60);
-        width: 25px;
-        height: 25px;
-        float: right;
-        margin-right: 10px;
-        cursor: pointer;
-      }
+::placeholder{
+  color: #d4d1d1;
+}
 
-      
+.addButton{
+  width: 50px;
+  height:40px;
+  border: none;
+  background-color: white;
+  color: #919090;
+  font-size: 20px;
+  transition: 0.5s ease;
+  cursor:pointer;
+  outline: none;
+  z-index: 1;
+  line-height: 40px;
+  text-align: center;
+}
+
+
+.addButton:hover {
+  background-color: rgb(114, 111, 111);
+  /* box-shadow: 2px 2px black; */
+  color: white;
+}
+
+.container {
+  width: 350px;
+  max-width: 350px;
+  background-color: #ffffff;
+  margin: auto;
+  border-top: 2px solid #adadad;
+}
+
+ul {
+  list-style: none;
+}
+
+
+header, form, .todoList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.todoList{
+  min-width: 300px;
+  color: black;
+  font-size: 20px;
+  flex-direction: column;
+
+}
+
+li {
+  background-color: #ffffff;
+  height: 35px;
+  width: 350px;
+  border-radius: 8px;
+  padding: 5px;
+  margin:5px 0;
+  border-bottom: 2px solid #f5f5f5;
+  position: relative;
+}
+
+.trashBtn , .editBtn{
+  background-color: rgb(245, 217, 60);
+  width: 25px;
+  height: 25px;
+  float:right;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.5s ease;
+  color: #383838;
+}
+
+.editBtn {
+  margin-right: 10px;
+}
+
+.trashBtn:hover , .editBtn:hover{
+  box-shadow: 2px 2px rgb(63, 63, 63);
+  background-color: rgb(245, 171, 60);
+}
+
+.fa-trash-alt ,.fa-check , .fa-wrench{
+  pointer-events: none;
+}
+
+.false .falseList {
+  background-color: rgb(255, 255, 255);
+  width: 25px;
+  height: 25px;
+  float: left;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid #dadada;
+  border-radius: 5px;
+  transition: 0.5s ease;
+  color: #868686;
+  margin-right: 10px;
+}
+
+.checkBtn:hover {
+  box-shadow: 2px 2px rgb(63, 63, 63);
+}
+
+.true .trueList {
+  background-color: rgb(136, 136, 136);
+  border-radius: 50%;
+  transition: 0.5s ease;
+  color: #f5f5f5;
+  float: left;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  outline: none;
+  margin-right: 10px;
+  border:none;
+}
+
+.true {
+  transition: 0.5s ease;
+  background-color: rgb(219, 219, 219);
+  color: #a3a3a3;
+  text-decoration: line-through;
+}
+
+.editInput {
+  position: absolute;
+  left: 40px;
+  height: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 5px;
+  border: 1px solid #cfcfcf;
+  outline: none;
+  display: none;
+}
+
+.editNew{
+  visibility: visible;
+  
+}
+   
    
     </style>    
 </head>
 
 <body>
-    <header>Todo List</header>
+  <div id="todo">
+    <div id="titleImg">
+        <div id="imgInner">
+            <header>Todo List</header>
+        </div>
+    </div>
+    
      <form >
-       <input class="addInput" type="text">
-       <button class="addButton" type="submit">Add</button>  
+       <input class="addInput" type="text" placeholder="Type your todos...">
+       <button class="addButton" type="submit"><i class="fas fa-plus"></i></button>  
      </form>
       
       <div class="container">
         <ul class="todoList">
-            
-        </ul>
+          
       </div>
+    </div>
         
 
     <script type="text/javascript">
 
-      var todos = [{name:"preset1", done:false},{name:"preset2",  done:false},{name:"preset3",  done:false}];
-      
-      todos.forEach((todo,index)=>{
-        creatTodo(todo.name);
-      })
-      // for(var i =0; i<todos.length; i++ ){
-      //   creatTodo(todos[i].name);
-      // };
-      
-// For Add new Item & Delete new Item
-     $(".addButton").click((event)=>{
-          event.preventDefault();
-          var inputValue = $(".addInput");
-          var inputValue = document.querySelector(".addInput");
-          todos.push({name:`${inputValue.value}`, done:false});
-          creatTodo(inputValue.value);
-          inputValue.value="";
-        console.log(todos);
+      var todos = [{name:"Learning", done:false},{name:"Ridding",  done:false},{name:"Dinner",  done:false}];
+      var inputValue = document.querySelector(".addInput");
+      var todoList = $(".todoList");
+
+      showList();
+
+      function showList(){
+        $("li").remove();
+        todos.forEach((value,index)=>{
+
+            $(".todoList").append(`<li class="${value.done}"> 
+                <span>${value.name}</span> 
+                <input type="text" class="editInput">
+                <button onclick="delTodos(${index})" class="trashBtn">
+                  <i class="far fa-trash-alt"></i>
+                </button> 
+                <button onclick="edit(${index})" class="editBtn ">
+                  <i class="fas fa-wrench"></i>
+                </button> 
+                <button onclick="toTrue(${index})" class="${value.done}List">
+                  <i class="fas fa-check"></i>
+                </button>
+              </li>`);
+         
+            });
+
+              // if($(todos.done) = "true"){
+              //   $(`.editBtn:eq(${index})`).prop("disabled",true);
+              // }
+
+      };
+
+      $(".addButton").click((event)=>{
+        event.preventDefault();
+        todos.push({name:inputValue.value, done:false});
+        inputValue.value = "";
+        showList();
+        
       });
 
-      function creatTodo(title){
-        $(".todoList").append(`<li> ${title} <button> X </button> </li>`);
-          $("li button").on('click',(event)=>{
-                    event.preventDefault();
-                    event.target.parentElement.remove();
-              todos.shift(this,1); 
-          }); 
+      function delTodos(i){
+        todos.splice(i,1)
+        showList();
+       
+      }
+
+
+      function toTrue(index){
+        if(todos[index].done != true){
+          todos[index].done = true;
+          
+          // $(`.editBtn:eq(${index})`).prop("disabled",true);
+          
+          // $(`.editBtn:eq(${index})`).disabled == true;
+        }else{
+          todos[index].done = false;
         }
+        showList();
+      }
+
+      function edit(index){
+        let choseSpan = $("span")[index];
+        choseSpan.innerText="";
+        let editedInput = $(".editInput")[index];
+        $(editedInput).toggle(".editNew");
+
+        console.log(todos);
+
+        $(editedInput).keydown((event)=>{
+         
+          if (event.which == 13){
+            let editedValue = editedInput.value;
+            todos[index].name = editedValue;
+            // console.log(todos[index]);
+            $(".editInput").remove();
+            showList();
+          }
+        })
+        }
+
         
+        
+        
+      
+
+      
+        
+      
+          
 
 
     </script>
