@@ -100,7 +100,6 @@ form {
 
 .addButton:hover {
   background-color: rgb(114, 111, 111);
-  /* box-shadow: 2px 2px black; */
   color: white;
 }
 
@@ -225,8 +224,6 @@ li {
   visibility: visible;
   
 }
-   
-   
     </style>    
 </head>
 
@@ -275,8 +272,15 @@ li {
                   <i class="fas fa-check"></i>
                 </button>
               </li>`);
-         
+
+              if(todos[index].done = true){
+              // $(".editBtn").eq(index).prop("disabled",true);
+              console.log(todos[index].done);
+            }else{
+              alert("1");
+            }
             });
+            
 
               // if($(todos.done) = "true"){
               //   $(`.editBtn:eq(${index})`).prop("disabled",true);
@@ -302,10 +306,6 @@ li {
       function toTrue(index){
         if(todos[index].done != true){
           todos[index].done = true;
-          
-          // $(`.editBtn:eq(${index})`).prop("disabled",true);
-          
-          // $(`.editBtn:eq(${index})`).disabled == true;
         }else{
           todos[index].done = false;
         }
